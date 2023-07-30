@@ -40,6 +40,21 @@ CLaserOdometry2DNode::CLaserOdometry2DNode(): Node("CLaserOdometry2DNode")
   this->declare_parameter<double>("freq", 10.0);
   this->get_parameter("freq", freq);
 
+
+  // define covariance matrix
+    // x variance
+    cov[0] = 0.001;
+    // y variance 
+    cov[7] = 0.001;
+    // z variance 
+    cov[14] = 1e5;
+    // rx variance
+    cov[21] = 1e5;
+    // ry variance
+    cov[28] = 1e5;
+    // rz variance
+    cov[35] = 0.01;
+
   // Init Publishers and Subscribers
   //---------------------------------
   buffer_ = std::make_shared<tf2_ros::Buffer>(this->get_clock());
@@ -223,6 +238,11 @@ void CLaserOdometry2DNode::publish()
   odom.twist.twist.linear.x = rf2o_ref.lin_speed;    //linear speed
   odom.twist.twist.linear.y = 0.0;
   odom.twist.twist.angular.z = rf2o_ref.ang_speed;   //angular speed
+
+  // update covariance 
+  odom.pose.covariance = cov;
+  odom.twist.covariance = cov;
+
   //publish the message
   odom_pub->publish(odom);
 
