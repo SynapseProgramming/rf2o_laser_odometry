@@ -29,6 +29,7 @@ public:
   std::string         base_frame_id;
   std::string         odom_frame_id;
   std::string         init_pose_from_topic;
+  std::array<double, 36>               cov;
 
   sensor_msgs::msg::LaserScan                     last_scan;
   bool                                            GT_pose_initialized;
