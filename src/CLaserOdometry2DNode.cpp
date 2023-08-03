@@ -43,9 +43,9 @@ CLaserOdometry2DNode::CLaserOdometry2DNode(): Node("CLaserOdometry2DNode")
 
   // define covariance matrix
     // x variance
-    cov[0] = 0.02;
+    cov[0] = 0.03;
     // y variance 
-    cov[7] = 0.02;
+    cov[7] = 0.03;
     // z variance 
     cov[14] = 1e5;
     // rx variance
@@ -53,7 +53,7 @@ CLaserOdometry2DNode::CLaserOdometry2DNode(): Node("CLaserOdometry2DNode")
     // ry variance
     cov[28] = 1e5;
     // rz variance
-    cov[35] = 0.02;
+    cov[35] = 0.03;
 
   // Init Publishers and Subscribers
   //---------------------------------
