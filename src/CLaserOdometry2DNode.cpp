@@ -53,7 +53,7 @@ CLaserOdometry2DNode::CLaserOdometry2DNode(): Node("CLaserOdometry2DNode")
     // ry variance
     cov[28] = 1e5;
     // rz variance
-    cov[35] = 0.03;
+    cov[35] = 0.1;
 
   // Init Publishers and Subscribers
   //---------------------------------
